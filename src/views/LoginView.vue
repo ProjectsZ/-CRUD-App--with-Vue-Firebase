@@ -1,13 +1,24 @@
+<script setup>
+import { ref } from "vue";
+import { useUserStore } from "../stores/user";
+const email=ref("");
+const password= ref("");
+
+const userStore =useUserStore();
+const login = ()=>{
+  userStore.login(email.value,password.value);
+};
+</script>
 <template>
   <div class="login">
     <h2>Login</h2>
-    <form>
+    <form @submit.prevent="login">
       <div class="login__input">
-        <input type="text" required />
+        <input type="text" required v-model ="email"/>
         <label>Username</label>
       </div>
       <div class="login__input">
-        <input type="password" required />
+        <input type="password" required v-model ="password" />
         <label>Password</label>
       </div>
 

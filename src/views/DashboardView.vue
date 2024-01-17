@@ -1,7 +1,14 @@
+<script setup >
+import { useUserStore } from '../stores/user';
+const userStore= useUserStore();
+const logout = () => {
+  userStore.logout();
+};
+</script>
 <template>
   <div class="container">
     <h1 class="title">Dashboard</h1>
-    <button class="buttons__btn buttons__btn--logout">Logout</button>
+    <button class="buttons__btn buttons__btn--logout" @click.prevent="logout">Logout</button>
   </div>
 </template>
 
